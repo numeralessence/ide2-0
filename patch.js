@@ -7,31 +7,34 @@
   calcDashboard();
 
   const sub = document.querySelector("header .sub");
-  if (sub) sub.textContent = "Mise à jour Drive 08/09/2026 • 373 formulations fixes • + calculs dynamiques • progression enregistrée sur cet appareil";
+  if (sub) sub.textContent = "Mise à jour Drive 08/09/2026 • 376 formulations fixes • + calculs dynamiques • progression enregistrée sur cet appareil";
 
   const __ide2OriginalStartMode = startMode;
+  const isRealCourseDiagram = q => (q.type||"single")==="diagram" && String(q.id||"").includes("DIAG-COURSE");
 
   const reviewBtn = document.querySelector('.mode[data-mode="review"]');
   if (reviewBtn && !document.querySelector('.mode[data-mode="diagrams"]')) {
     const btn = document.createElement("button");
     btn.className = "mode";
     btn.dataset.mode = "diagrams";
-    btn.innerHTML = '<b>🫀 Schémas à compléter</b><span class="note">Anatomie, embryologie, infectiologie</span>';
+    btn.innerHTML = '<b>🫀 Schémas à compléter</b><span class="note">Priorité aux vrais schémas de tes cours</span>';
     reviewBtn.parentElement.appendChild(btn);
     btn.addEventListener("click", () => {
       const ue = ueFilter.value, t = topicFilter.value, d = diffFilter.value;
-      const pool = allQuestions.filter(q =>
+      const matches = allQuestions.filter(q =>
         (q.type||"single")==="diagram" &&
         (ue==="ALL"||q.ue===ue) &&
         (t==="ALL"||q.topic===t) &&
         (d==="ALL"||String(q.difficulty)===d)
       );
+      const realMatches = matches.filter(isRealCourseDiagram);
+      const pool = realMatches.length ? realMatches : matches;
       if (!pool.length) {
         alert("Aucun schéma disponible avec ces filtres. Essaie « Toutes les UE » ou un autre thème.");
         return;
       }
       __ide2OriginalStartMode("train", pool);
-      quizMode.textContent = "Schémas à compléter";
+      quizMode.textContent = realMatches.length ? "Schémas réels de cours" : "Schémas à compléter";
     });
   }
 
@@ -41,7 +44,17 @@
       const pool = filteredQuestions();
       const chosen = [], ids = new Set();
       const add = (type, n) => {
-        const candidates = pool.filter(q => (q.type||"single")===type && !ids.has(q.id));
+        let candidates = pool.filter(q => (q.type||"single")===type && !ids.has(q.id));
+        if (type==="diagram") {
+          const real = candidates.filter(isRealCourseDiagram);
+          const synthetic = candidates.filter(q=>!isRealCourseDiagram(q));
+          const selected = [
+            ...smartPick(real, Math.min(n, real.length)),
+            ...smartPick(synthetic, Math.max(0, n-Math.min(n, real.length)))
+          ];
+          selected.forEach(q=>{if(!ids.has(q.id)){ids.add(q.id);chosen.push(q);}});
+          return;
+        }
         smartPick(candidates, n).forEach(q => {
           if (!ids.has(q.id)) { ids.add(q.id); chosen.push(q); }
         });
