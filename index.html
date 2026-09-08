@@ -18,6 +18,9 @@
       "data-embryology.js",
       "data-relation.js",
       "data-infectio.js",
+      "data-real-heart.js",
+      "data-real-resp.js",
+      "data-real-emb.js",
       "patch.js"
     ];
     const frame=document.getElementById("appFrame");
@@ -27,7 +30,7 @@
         for(const file of IDE2_MODULES){
           await new Promise((resolve,reject)=>{
             const s=doc.createElement("script");
-            s.src="./"+file+"?v=20260908-3";
+            s.src="./"+file+"?v=20260908-4";
             s.onload=resolve;
             s.onerror=()=>reject(new Error("Impossible de charger "+file));
             doc.body.appendChild(s);
