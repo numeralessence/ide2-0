@@ -59,6 +59,60 @@
     return __ide2OriginalStartMode(m, forcedList);
   };
 
+  // UX quiz : INDICE bien visible + PASSER si la question est trop difficile.
+  const quizActions = document.querySelector("#quiz .actions");
+  let skipBtn = document.getElementById("skipBtn");
+  if (quizActions && !skipBtn) {
+    skipBtn = document.createElement("button");
+    skipBtn.type = "button";
+    skipBtn.id = "skipBtn";
+    skipBtn.className = "secondary";
+    skipBtn.textContent = "⏭️ PASSER";
+    skipBtn.title = "Passer cette question et la retrouver ensuite dans Mes erreurs";
+    if (hintBtn && hintBtn.parentElement === quizActions) {
+      hintBtn.insertAdjacentElement("afterend", skipBtn);
+    } else {
+      quizActions.prepend(skipBtn);
+    }
+
+    skipBtn.addEventListener("click", () => {
+      if (answered || !session.length) return;
+      const q = session[idx];
+      answered = true;
+      const advancedByExam = registerResult(q, false, {skipped:true});
+      if (!advancedByExam) next();
+    });
+  }
+
+  if (hintBtn) {
+    hintBtn.textContent = "💡 INDICE";
+    hintBtn.title = "Afficher un indice sans donner directement la réponse";
+  }
+
+  const __ide2OriginalRenderQuestion = renderQuestion;
+  renderQuestion = function() {
+    __ide2OriginalRenderQuestion();
+    if (hintBtn) hintBtn.textContent = "💡 INDICE";
+    const b = document.getElementById("skipBtn");
+    if (b) {
+      b.disabled = false;
+      b.classList.remove("hidden");
+    }
+  };
+
+  const __ide2OriginalShowFeedback = showFeedback;
+  showFeedback = function(ok, html) {
+    __ide2OriginalShowFeedback(ok, html);
+    const b = document.getElementById("skipBtn");
+    if (b) b.classList.add("hidden");
+  };
+
+  const __ide2OriginalFormatUserAnswer = formatUserAnswer;
+  formatUserAnswer = function(q, detail) {
+    if (detail && detail.skipped) return "⏭️ Question passée";
+    return __ide2OriginalFormatUserAnswer(q, detail);
+  };
+
   const header = document.querySelector("header");
   if (header && !document.getElementById("driveSyncBadge")) {
     const badge = document.createElement("div");
