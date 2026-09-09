@@ -11,16 +11,28 @@
   </style>
 </head>
 <body>
-  <iframe id="appFrame" src="./Index.html" title="IDE 2.0 — Révisions IFSI"></iframe>
+  <iframe id="appFrame" src="./Index.html?v=20260909-1" title="IDE 2.0 — Révisions IFSI"></iframe>
   <script>
     const IDE2_MODULES=[
       "data-anatomy.js",
       "data-embryology.js",
       "data-relation.js",
       "data-infectio.js",
+
+      "heart-b64-1.js",
+      "heart-b64-2.js",
+      "heart-b64-3.js",
       "data-real-heart.js",
+
+      "resp-b64-1.js",
+      "resp-b64-2.js",
+      "resp-b64-3.js",
       "data-real-resp.js",
+
+      "emb-b64-1.js",
+      "emb-b64-2.js",
       "data-real-emb.js",
+
       "patch.js"
     ];
     const frame=document.getElementById("appFrame");
@@ -30,14 +42,14 @@
         for(const file of IDE2_MODULES){
           await new Promise((resolve,reject)=>{
             const s=doc.createElement("script");
-            s.src="./"+file+"?v=20260908-5";
+            s.src="./"+file+"?v=20260909-1";
             s.onload=resolve;
             s.onerror=()=>reject(new Error("Impossible de charger "+file));
             doc.body.appendChild(s);
           });
         }
       }catch(err){
-        console.error("IDE 2.0 — mise à jour Drive",err);
+        console.error("IDE 2.0 — chargement de la mise à jour",err);
       }
     });
   </script>
