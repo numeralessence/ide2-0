@@ -11,43 +11,34 @@
   </style>
 </head>
 <body>
-  <iframe id="appFrame" src="./Index.html?v=20260909-1" title="IDE 2.0 — Révisions IFSI"></iframe>
+  <iframe id="appFrame" src="./Index.html?v=20260917-1" title="IDE 2.0 — Révisions IFSI"></iframe>
   <script>
-    const IDE2_MODULES=[
+    const BASE_MODULES=[
       "data-anatomy.js",
       "data-embryology.js",
       "data-relation.js",
       "data-infectio.js",
-
-      "heart-b64-1.js",
-      "heart-b64-2.js",
-      "heart-b64-3.js",
-      "data-real-heart.js",
-
-      "resp-b64-1.js",
-      "resp-b64-2.js",
-      "resp-b64-3.js",
-      "data-real-resp.js",
-
-      "emb-b64-1.js",
-      "emb-b64-2.js",
-      "data-real-emb.js",
-
-      "patch.js"
+      "heart-b64-1.js","heart-b64-2.js","heart-b64-3.js","data-real-heart.js",
+      "resp-b64-1.js","resp-b64-2.js","resp-b64-3.js","data-real-resp.js",
+      "emb-b64-1.js","emb-b64-2.js","data-real-emb.js",
+      "drivepack-1.js","drivepack-2.js","drivepack-3.js","drivepack-4.js",
+      "data-drive-20260917.js"
     ];
     const frame=document.getElementById("appFrame");
+    const loadScript=(doc,file)=>new Promise((resolve,reject)=>{
+      const s=doc.createElement("script");
+      s.src="./"+file+"?v=20260917-1";
+      s.onload=resolve;
+      s.onerror=()=>reject(new Error("Impossible de charger "+file));
+      doc.body.appendChild(s);
+    });
     frame.addEventListener("load",async()=>{
       const doc=frame.contentDocument;
       try{
-        for(const file of IDE2_MODULES){
-          await new Promise((resolve,reject)=>{
-            const s=doc.createElement("script");
-            s.src="./"+file+"?v=20260909-1";
-            s.onload=resolve;
-            s.onerror=()=>reject(new Error("Impossible de charger "+file));
-            doc.body.appendChild(s);
-          });
-        }
+        for(const file of BASE_MODULES) await loadScript(doc,file);
+        if(frame.contentWindow.IDE2_DATA_READY) await frame.contentWindow.IDE2_DATA_READY;
+        await loadScript(doc,"patch.js");
+        await loadScript(doc,"patch-meta-20260917.js");
       }catch(err){
         console.error("IDE 2.0 — chargement de la mise à jour",err);
       }
