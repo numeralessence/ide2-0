@@ -18,7 +18,7 @@ RÈGLE DE MAINTENANCE
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#1f7a72">
+<meta name="theme-color" content="#a32963">
 <title>IDE 2.0 — Révisions IFSI</title>
 <style>
 :root {
@@ -128,6 +128,24 @@ footer{font-size:13px;margin-top:32px}
 @media(max-width:760px){.wrap{padding-top:14px}.navlabel{display:none}.brandnav{margin-bottom:12px}.grid{gap:14px}.quiztop{flex-wrap:wrap}.card{padding:18px}.mode{min-height:94px}}
 @media(max-width:390px){#home .span8 .controls{grid-template-columns:1fr}.mode{min-height:75px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Palette chaude et dynamique */
+:root{--bg:#fff8f3;--card:#fff;--ink:#39242e;--muted:#70585f;--teal:#087f77;--blue:#087f86;--purple:#a32963;--orange:#e66a37;--green:#23814f;--red:#bd3450;--line:#f0d9d5;--shadow:0 10px 32px rgba(137,53,65,.09)}
+body{background:radial-gradient(ellipse at 95% 0%,#ffe5b5 0,transparent 38%),radial-gradient(ellipse at 0% 25%,#ffdce5 0,transparent 42%),#fff8f3}
+.brand{color:#8c244f}.brandmark{background:linear-gradient(145deg,#c92f68,#ef7859);box-shadow:0 5px 16px #c92f6830}.navlabel{color:#70585f}
+header{background:linear-gradient(115deg,#98254d 0%,#bc3865 43%,#c95132 100%);box-shadow:0 16px 44px #a52e4d28}
+header .tagline{color:#fff0e1}header .sub{color:#fff5ed}header .kicker{color:#ffe8ac!important}
+.kicker{color:#a32963}select{background:#fff9f6}
+.mode{background:#fff0e8;border-color:#f6d9c9}.mode[data-mode="quick"],.mode[data-mode="diagrams"]{background:#dcf8ef;border-color:#a9dfd1}
+.mode[data-mode="exam"]{background:#ffe3ec;border-color:#f2b7ce}.mode[data-mode="mistakes"]{background:#ffe5df;border-color:#f1bdb2}.mode[data-mode="review"]{background:#fff1c9;border-color:#efd49a}
+.mode:hover{border-color:#c03b69;box-shadow:0 7px 18px #c03b691c}
+.primary{background:linear-gradient(110deg,#a52257,#c33167);box-shadow:0 4px 12px #a5225726}.secondary{color:#92264f;border-color:#efd4d7}
+.stat{background:#ffe4ee}.stat:nth-child(2){background:#ddf6ed}.stat:nth-child(3){background:#ffedc4}.stat b{color:#92264f}
+.bar i,.progressline i{background:linear-gradient(90deg,#d83c79,#ee8453,#129b8d)}.bar,.progressline{background:#f4e6e2}
+.choice:hover{background:#fff3ed;border-color:#df8a80}.choice:has(input:checked){background:#ffe2ee;border-color:#c74375}.choice.good{background:#e5f8ec;border-color:var(--green)}.choice.bad{background:#fff0ef;border-color:var(--red)}
+input[type=checkbox]{accent-color:#b62c65}.pill,.typebadge{background:#ffe6ed;color:#92264f}.feedback{background:#fff5ed;border-color:#d45e43}.bigscore{color:#a32963}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline-color:#087f77}
+
 </style>
 </head>
 <body>
