@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#1f7a72">
-  <title>IDE 2.0 — Révisions IFSI</title>
+  <meta name="theme-color" content="#75467f">
+  <title>IDE 2.0 — Campus de révisions IFSI</title>
   <style>
-    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f7f5f0}
-    #appFrame{display:block;width:100%;height:100%;border:0;background:#f7f5f0}
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f8f5fa}
+    #appFrame{display:block;width:100%;height:100%;border:0;background:#f8f5fa}
   </style>
 </head>
 <body>
-  <iframe id="appFrame" src="./Index.html?v=20261125-2" title="IDE 2.0 — Révisions IFSI"></iframe>
+  <iframe id="appFrame" src="./Index.html?v=20261125-3" title="IDE 2.0 — Révisions IFSI"></iframe>
   <script>
     const BASE_MODULES=[
       "data-anatomy.js",
@@ -39,7 +39,7 @@
     const frame=document.getElementById("appFrame");
     const loadScript=(doc,file)=>new Promise((resolve,reject)=>{
       const s=doc.createElement("script");
-      s.src="./"+file+"?v=20261125-2";
+      s.src="./"+file+"?v=20261125-3";
       s.onload=resolve;
       s.onerror=()=>reject(new Error("Impossible de charger "+file));
       doc.body.appendChild(s);
