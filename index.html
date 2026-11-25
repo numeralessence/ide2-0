@@ -11,7 +11,7 @@
   </style>
 </head>
 <body>
-  <iframe id="appFrame" src="./Index.html?v=20260917-1" title="IDE 2.0 — Révisions IFSI"></iframe>
+  <iframe id="appFrame" src="./Index.html?v=20261125-1" title="IDE 2.0 — Révisions IFSI"></iframe>
   <script>
     const BASE_MODULES=[
       "data-anatomy.js",
@@ -24,10 +24,21 @@
       "drivepack-1.js","drivepack-2.js","drivepack-3.js","drivepack-4.js",
       "data-drive-20260917.js"
     ];
+    const UPDATE_20261125=[
+      "data-20261125-uea.js",
+      "data-20261125-semiologie.js",
+      "data-20261125-pharma-imagerie.js",
+      "data-20261125-hygiene.js",
+      "data-20261125-ethique-relation-anthro.js",
+      "data-20261125-sciences-infirmieres.js",
+      "data-20261125-bio-physio.js",
+      "data-20261125-english.js",
+      "data-20261125-raisonnement-relation-surveillance.js"
+    ];
     const frame=document.getElementById("appFrame");
     const loadScript=(doc,file)=>new Promise((resolve,reject)=>{
       const s=doc.createElement("script");
-      s.src="./"+file+"?v=20260917-1";
+      s.src="./"+file+"?v=20261125-1";
       s.onload=resolve;
       s.onerror=()=>reject(new Error("Impossible de charger "+file));
       doc.body.appendChild(s);
@@ -37,8 +48,9 @@
       try{
         for(const file of BASE_MODULES) await loadScript(doc,file);
         if(frame.contentWindow.IDE2_DATA_READY) await frame.contentWindow.IDE2_DATA_READY;
+        for(const file of UPDATE_20261125) await loadScript(doc,file);
         await loadScript(doc,"patch.js");
-        await loadScript(doc,"patch-meta-20260917.js");
+        await loadScript(doc,"patch-meta-20261125.js");
       }catch(err){
         console.error("IDE 2.0 — chargement de la mise à jour",err);
       }
