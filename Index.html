@@ -87,21 +87,63 @@ footer{color:var(--muted);font-size:12px;text-align:center;margin-top:22px}
 .diagraminput{min-width:0;width:100%;border:1px solid var(--line);border-radius:11px;padding:10px 11px;background:#fff;font-size:16px}
 .diagraminput.good{background:#eaf7ee;border-color:var(--green)}.diagraminput.bad{background:#fff0ef;border-color:var(--red)}
 
+:root{--bg:#f8f5fa;--card:#fff;--ink:#30283e;--muted:#665d72;--teal:#176e70;--blue:#246f83;--purple:#75467f;--orange:#b16b44;--green:#28794f;--red:#b83d58;--line:#e7dce9;--shadow:0 10px 36px rgba(70,38,85,.075)}
+body{background:radial-gradient(ellipse at 96% 0%,#e5f5f2 0,transparent 38%),radial-gradient(ellipse at 0% 20%,#f4e4ef 0,transparent 42%),#f8f5fa;font-size:16px;line-height:1.55}
+.wrap{max-width:1240px;padding:24px clamp(14px,3vw,38px) 60px}
+.brandnav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;padding:0 2px}
+.brand{display:flex;align-items:center;gap:12px;color:#4b2d5c;font-weight:850;font-size:19px;letter-spacing:-.03em}
+.brandmark{display:grid;place-items:center;width:44px;height:44px;border-radius:15px;background:linear-gradient(145deg,#773d80,#b86495);color:white;box-shadow:0 5px 16px #75467f30}
+.brandmark svg{width:27px;height:27px}.navlabel{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:750;color:#665d72}
+header{isolation:isolate;background:linear-gradient(112deg,#382447 0%,#63386c 48%,#176e70 100%);border:1px solid #ffffff35;border-radius:26px;padding:clamp(24px,4vw,46px);box-shadow:0 16px 44px #4b2d5c22}
+header:after{content:"";width:290px;height:290px;border:1px solid #ffffff35;border-radius:50%;right:-75px;bottom:-140px;box-shadow:0 0 0 35px #ffffff0b,0 0 0 70px #ffffff08;opacity:1;z-index:-1}
+header h1{font-size:clamp(32px,5vw,54px);line-height:1.1;letter-spacing:-.045em;margin:12px 0 10px;font-weight:850}
+header .tagline{font-size:clamp(17px,2.4vw,21px);font-weight:550;color:#f9e5f3;max-width:720px}
+header .sub{font-size:13px;line-height:1.5;color:#f5edf9;max-width:770px;margin-top:18px}
+header .kicker{color:#c1f5eb!important;letter-spacing:.15em}
+#driveSyncBadge{max-width:100%;overflow-wrap:anywhere}
+.grid{gap:20px;margin-top:24px}.card{padding:clamp(18px,2.5vw,28px);border-radius:22px;min-width:0}
+.card h2{font-size:clamp(20px,2.6vw,26px);letter-spacing:-.035em;line-height:1.25;margin:6px 0 18px}
+.kicker{color:#75467f;font-size:11px;letter-spacing:.13em}
+#home .span8 .controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+select{width:100%;max-width:100%;min-width:0;color:var(--ink);background:#fbf8fc;padding:12px;border-radius:12px}
+.mode{min-width:0;min-height:100px;border-radius:17px;padding:17px;color:var(--ink);background:#faf5fb;transition:transform .15s,border-color .15s,box-shadow .15s}
+.mode b{font-size:17px;letter-spacing:-.02em}.mode .note{font-size:13px}
+.mode[data-mode="quick"],.mode[data-mode="diagrams"]{background:#eaf7f4;border-color:#c7e5df}
+.mode[data-mode="exam"]{background:#eee5f5;border-color:#ddc9e8}
+.mode[data-mode="mistakes"]{background:#fceff3;border-color:#eed5df}
+.mode[data-mode="review"]{background:#fff4e9;border-color:#f0dfcd}
+.mode:hover{border-color:#75467f;box-shadow:0 7px 18px #75467f12;transform:translateY(-2px)}
+.primary{background:linear-gradient(110deg,#56366e,#75467f);box-shadow:0 4px 12px #75467f26}
+.secondary{color:#4b2d5c;border-color:#e1d4e7;background:#fff}
+.stats{gap:8px}.stat{background:#f3edf8;padding:12px 4px;min-width:0}.stat:nth-child(2){background:#e6f4f0}.stat:nth-child(3){background:#fcebf1}.stat b{font-size:clamp(19px,2.5vw,28px);color:#56366e}.stat .note{font-size:11px;overflow-wrap:anywhere}
+.bar i,.progressline i{background:linear-gradient(90deg,#a45b96,#238e89)}.bar,.progressline{background:#eee7f1}
+#topicProgress{max-height:440px;overflow:auto;padding-right:6px}.topicrow{font-size:14px}
+.qtext{font-weight:750;line-height:1.42;letter-spacing:-.025em}
+.choice{font-weight:550;line-height:1.5;padding:16px 18px;color:var(--ink);transition:background .15s,border-color .15s}
+.choice:hover{background:#f8f2fb;border-color:#a979b4}.choice:has(input:checked){background:#eee6f6;border-color:#9165a4}.choice.good{background:#eaf7ee;border-color:var(--green)}.choice.bad{background:#fff0ef;border-color:var(--red)}
+input[type=checkbox]{accent-color:#75467f}.pill,.typebadge{background:#f1e8f6;color:#56366e}.feedback{background:#f7f1fa;border-color:#75467f}.bigscore{color:#75467f}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #268e89;outline-offset:3px}
+button:disabled{cursor:default}.drawstage img{display:block;max-width:100%;height:auto;object-fit:contain;margin:auto}
+footer{font-size:13px;margin-top:32px}
+@media(max-width:760px){.wrap{padding-top:14px}.navlabel{display:none}.brandnav{margin-bottom:12px}.grid{gap:14px}.quiztop{flex-wrap:wrap}.card{padding:18px}.mode{min-height:94px}}
+@media(max-width:390px){#home .span8 .controls{grid-template-columns:1fr}.mode{min-height:75px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="brandnav"><div class="brand"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h6l3-7 5 13 4-9 3 3h5"/><path d="M16 4C8-2 0 7 5 15m11-11c8-6 16 3 11 11M7 22l9 7 9-7"/></svg></span><span>Infirmière 2.0 <small style="display:block;font-size:11px;letter-spacing:.08em;font-weight:650;color:#665d72">CAMPUS DE RÉVISIONS</small></span></div><span class="navlabel">IFSI · Apprendre autrement</span></div>
 <header>
-  <div class="kicker" style="color:#d9fff7">Révisions IFSI • IDE 2.0</div>
-  <h1>Je comprends → je m’entraîne → je maîtrise</h1>
-  <div class="tagline">QCM • écrit • calculs • schémas vierges à annoter • moteur corrigé • indices guidés • bilan examen détaillé</div>
+  <div class="kicker" style="color:#d9fff7">TON ESPACE D’APPRENTISSAGE · IFSI</div>
+  <h1>IDE 2.0 — Campus</h1>
+  <div class="tagline">Je comprends, je m’entraîne, je maîtrise.</div>
   <div class="sub">V1 • banque fixe : 304 formulations • progression enregistrée sur cet appareil</div>
 </header>
 
 <section id="home">
 <div class="grid">
   <div class="card span8">
-    <div class="kicker">Choisir ton entraînement</div>
+    <div class="kicker">01 / Mes révisions</div>
     <h2>Qu’est-ce que tu révises aujourd’hui ?</h2>
     <div class="controls">
       <select id="ueFilter"><option value="ALL">Toutes les UE</option></select>
@@ -128,7 +170,7 @@ footer{color:var(--muted);font-size:12px;text-align:center;margin-top:22px}
   </div>
 
   <div class="card span4">
-    <div class="kicker">Tableau de bord</div><h2>Ta progression</h2>
+    <div class="kicker">02 / Mes résultats</div><h2>Ta progression</h2>
     <div class="stats">
       <div class="stat"><b id="sAttempts">0</b><span class="note">réponses</span></div>
       <div class="stat"><b id="sAccuracy">—</b><span class="note">réussite</span></div>
@@ -138,12 +180,12 @@ footer{color:var(--muted);font-size:12px;text-align:center;margin-top:22px}
   </div>
 
   <div class="card span6">
-    <div class="kicker">Progression par thème</div><h2>Où tu en es</h2>
+    <div class="kicker">03 / Mes connaissances</div><h2>Où tu en es</h2>
     <div id="topicProgress"></div>
   </div>
 
   <div class="card span6">
-    <div class="kicker">Faire évoluer l’outil</div><h2>Ajouter de nouveaux cours</h2>
+    <div class="kicker">04 / Mes ressources</div><h2>Ajouter de nouveaux cours</h2>
     <p class="note">Quand tu me donneras un nouveau cours, je pourrai te produire un <b>pack JSON</b>. Ici, tu l’importes et la banque de quiz s’agrandit sans perdre ta progression.</p>
     <div class="actions">
       <label class="secondary filebtn">📥 Importer un pack<input id="importPack" type="file" accept=".json,application/json" hidden></label>
