@@ -11,7 +11,7 @@
   </style>
 </head>
 <body>
-  <iframe id="appFrame" src="./Index.html?v=20261125-1" title="IDE 2.0 — Révisions IFSI"></iframe>
+  <iframe id="appFrame" src="./Index.html?v=20261125-2" title="IDE 2.0 — Révisions IFSI"></iframe>
   <script>
     const BASE_MODULES=[
       "data-anatomy.js",
@@ -33,12 +33,13 @@
       "data-20261125-sciences-infirmieres.js",
       "data-20261125-bio-physio.js",
       "data-20261125-english.js",
-      "data-20261125-raisonnement-relation-surveillance.js"
+      "data-20261125-raisonnement-relation-surveillance.js",
+      "data-partiel-20261125.js"
     ];
     const frame=document.getElementById("appFrame");
     const loadScript=(doc,file)=>new Promise((resolve,reject)=>{
       const s=doc.createElement("script");
-      s.src="./"+file+"?v=20261125-1";
+      s.src="./"+file+"?v=20261125-2";
       s.onload=resolve;
       s.onerror=()=>reject(new Error("Impossible de charger "+file));
       doc.body.appendChild(s);
